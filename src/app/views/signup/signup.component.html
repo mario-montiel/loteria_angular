@@ -1,0 +1,38 @@
+<h1 class='title has-text-centered' style='padding: 1rem;'>
+  Join our shit</h1>
+
+<div class='columns is-mobile is-centered'>
+  <form [formGroup]='formSignUp' (ngSubmit)='submit()' method="POST"
+  class='column is-half' style='max-width: 200px;'>
+    <div class='field'>
+      <label class='label'>Username</label>
+      <div class='control'>
+        <input [class.is-danger]='validate("username")' class='input'
+        type='text' formControlName='username'>
+      </div>
+    </div>
+
+    <div class='field'>
+      <label class='label'>Email</label>
+      <div class='control'>
+        <input [class.is-danger]='validate("email")' class='input'
+        type='email' formControlName='email'>
+      </div>
+    </div>
+
+    <div class='field'>
+      <label class='label'>Password</label>
+      <div class='control'>
+        <input [class.is-danger]='validate("password")' class='input'
+        type='password' formControlName='password'>
+      </div>
+    </div>
+
+    <div class='field' style='margin-top: 1.4rem;'>
+      <div class='control'>
+        <button type='submit' [disabled]='!formSignUp.valid'
+        class='button is-info is-outlined is-fullwidth'>Sign up</button>
+      </div>
+    </div>
+  </form>
+</div>
