@@ -10,6 +10,9 @@ import { SignUpComponent } from './views/signup/signup.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WelcomeComponent } from './views/welcome/welcome.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './material';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,12 @@ import { WelcomeComponent } from './views/welcome/welcome.component';
     WelcomeComponent,
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
