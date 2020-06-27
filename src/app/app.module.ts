@@ -13,6 +13,7 @@ import { WelcomeComponent } from './views/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material';
+import { BoardComponent } from './components/board/board.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MaterialModule } from './material';
     SignUpComponent,
     NavbarComponent,
     WelcomeComponent,
+    BoardComponent,
   ],
   imports: [
     MaterialModule,

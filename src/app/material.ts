@@ -6,7 +6,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {LayoutModule} from '@angular/cdk/layout';
 
 import {A11yModule} from '@angular/cdk/a11y';
 import {BidiModule} from '@angular/cdk/bidi';
@@ -38,8 +37,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
-    MatToolbarModule,
-    LayoutModule
+    MatToolbarModule
   ]
 })
 export class MaterialModule {}
