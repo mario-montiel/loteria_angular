@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Ws } from '@adonisjs/websocket-client';
+import Ws from '@adonisjs/websocket-client';
 
 @Injectable({ providedIn: 'root' })
 export class LoteriaService {
@@ -7,11 +7,27 @@ export class LoteriaService {
   ws: any
 
   constructor() {
-    this.ws = Ws('ws://localhost:3333/ws')
+    this.ws = Ws('ws://127.0.0.1:3333')
   }
 
   suscribe() {
     this.ws.connect()
     this.socket = this.ws.suscribe('loteria')
+    this.socket.on('open', () => {
+      console.log('connect');
+    });
+    this.socket.on('close', () => {
+      console.log('close');
+    });
+
+    // this.socket.connect((error, connected) => {
+    //   if (error) {
+    //     // do something
+    //     console.log(error);
+    //   }
+    //   if (connected){
+    //     console.log(connected);
+    //   }
+    // });
   }
 }
