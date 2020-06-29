@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
     console.log(sessionStorage.getItem('user'));
   }
 
-  onCardSelect(card) {
+  public onCardSelect(card) {
     // const data = {
     //   user_id: JSON.parse(sessionStorage.getItem('user')).id,
     //   board_id: JSON.parse(sessionStorage.getItem('userBoard')).id,

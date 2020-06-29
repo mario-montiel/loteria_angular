@@ -1,23 +1,20 @@
-<div class="container-loteria" (click)="onCardSelect(img1)">
-  <img #img1 class="img" src="http://127.0.0.1:3333/img/cards/alacran.png" alt="">
-</div>
 <mat-card class="tablero" [class.mat-elevation-z15]="!isActive">
-	<img class="imagen" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
-	<img class="imagen col" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen" (click)="onCardSelect(1)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(2)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(3)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(4)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen" (click)="onCardSelect(5)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(6)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(7)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(8)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen" (click)="onCardSelect(9)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(10)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(11)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(12)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen" (click)="onCardSelect(13)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(14)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(15)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+	<img class="imagen col" (click)="onCardSelect(16)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
 </mat-card>
 <img class="carta" [class.mat-elevation-z15]="!isActive" src="http://127.0.0.1:3333/img/cards/cotorro.png">
 <mat-card class="ganar">
