@@ -1,11 +1,11 @@
 <div class="login">
-  <h2>Ingrese con su usuario</h2>
+  <h2>Únete</h2>
       <form [formGroup]='formSignUp' (ngSubmit)='submit()' method="POST" class="form-inputs">
         <mat-form-field appearance="outline">
           <mat-label>Ingrese su usuario</mat-label>
-          <input 
-          matInput 
-          placeholder="Nombre de usuario" 
+          <input
+          matInput
+          placeholder="Nombre de usuario"
           [class.is-danger]='validate("username")'
           type='email'
           formControlName='username'
@@ -15,9 +15,9 @@
         <br>
         <mat-form-field appearance="outline">
           <mat-label>Ingrese su correo electrónico</mat-label>
-          <input 
-          matInput 
-          placeholder="Correo electrónico" 
+          <input
+          matInput
+          placeholder="Correo electrónico"
           [class.is-danger]='validate("email")'
           type='email'
           formControlName='email'
@@ -27,19 +27,19 @@
         <br>
         <mat-form-field appearance="outline">
           <mat-label>Ingrese su contraseña</mat-label>
-          <input 
-          matInput 
+          <input
+          matInput
           placeholder="Contraseña"
           [class.is-danger]='validate("password")'
-          type='password' 
+          type='password'
           formControlName='password'
           >
           <mat-icon matSuffix>vpn_key</mat-icon>
         </mat-form-field>
         <br>
-      <button 
-        (click)="submit()" 
-        class="btn-login" 
+      <button
+        (click)="submit()"
+        class="btn-login"
         mat-raised-button color="primary"
         type='submit' [disabled]='!formSignUp.valid'
         >Acceder</button>
