@@ -8,6 +8,7 @@ import { LoteriaService } from 'src/app/services/ws/loteria.service'
   styleUrls: ['./board.component.sass']
 })
 export class BoardComponent implements OnInit {
+  isActive = false;
   constructor(private loteriaService: LoteriaService) {
     loteriaService.suscribe()
   }
