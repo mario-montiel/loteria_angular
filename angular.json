@@ -28,8 +28,12 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+=======
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/bulma/css/bulma.min.css",
+>>>>>>> bb2e4d9e9c6ea659f536e480ae52f19ad2d9e7bd
               "src/styles.sass"
             ],
             "scripts": [],
