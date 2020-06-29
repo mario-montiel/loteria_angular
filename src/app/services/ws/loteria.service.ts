@@ -7,27 +7,15 @@ export class LoteriaService {
   ws: any
 
   constructor() {
-    this.ws = Ws('ws://127.0.0.1:3333')
+    this.ws = Ws('ws://localhost:3333', { path: 'ws' })
   }
 
   suscribe() {
     this.ws.connect()
-    this.socket = this.ws.suscribe('loteria')
-    this.socket.on('open', () => {
-      console.log('connect');
-    });
-    this.socket.on('close', () => {
-      console.log('close');
-    });
+    this.socket = this.ws.subscribe('loteria')
+  }
 
-    // this.socket.connect((error, connected) => {
-    //   if (error) {
-    //     // do something
-    //     console.log(error);
-    //   }
-    //   if (connected){
-    //     console.log(connected);
-    //   }
-    // });
+  onCardSelect(x) {
+    console.log(x);
   }
 }

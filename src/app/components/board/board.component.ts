@@ -8,8 +8,13 @@ import { LoteriaService } from 'src/app/services/ws/loteria.service';
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private loteria: LoteriaService) { this.loteria.suscribe(); }
+  constructor(private loteriaService: LoteriaService) {
+    loteriaService.suscribe();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onCardSelect(card) {
+    console.log(card);
   }
 }
