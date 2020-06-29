@@ -10,7 +10,6 @@ import { JsonPipe } from '@angular/common';
 export class BoardComponent implements OnInit {
   isActive = false;
   constructor(private loteriaService: LoteriaService) {
-    loteriaService.suscribe();
   }
 
   ngOnInit(): void {

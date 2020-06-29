@@ -5,7 +5,6 @@ import Ws from '@adonisjs/websocket-client';
 export class LoteriaService {
   socket: any
   ws: any
-  responseCard: any[]
 
   constructor() {
     this.ws = Ws('ws://localhost:3333', { path: 'ws' })
@@ -22,6 +21,10 @@ export class LoteriaService {
 
   emitClose(user_id) {
     this.socket.emit('close', user_id)
+  }
+
+  emitCardSelect(data) {
+    this.socket.emit('cardSelect', data)
   }
 
   getSocket() { return this.socket }
