@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/http/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoteriaService } from 'src/app/services/ws/loteria.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit  {
     password : new FormControl('', Validators.required)
   });
 
-  constructor(private userService: UserService, public router: Router) {}
+  constructor(private userService: UserService, public router: Router, private loteriaService: LoteriaService) {}
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit  {
       data => {
         console.log(data);
         this.userService.setToken(data.token);
+        this.loteriaService.onJoin(data.id)
         sessionStorage.setItem('user', JSON.stringify(data));
         this.router.navigateByUrl('');
       },

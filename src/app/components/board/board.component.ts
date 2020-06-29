@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-//import { Picture } from 'src/app/assets/image';
-import { LoteriaService } from 'src/app/services/ws/loteria.service'
+import { Component, OnInit } from '@angular/core';
+import { LoteriaService } from 'src/app/services/ws/loteria.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-board',
@@ -10,8 +10,35 @@ import { LoteriaService } from 'src/app/services/ws/loteria.service'
 export class BoardComponent implements OnInit {
   isActive = false;
   constructor(private loteriaService: LoteriaService) {
-    loteriaService.suscribe()
+    loteriaService.suscribe();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.onJoin();
+  }
+
+  onJoin() {
+    sessionStorage.getItem('user');
+    console.log(sessionStorage.getItem('user'));
+  }
+
+  onCardSelect(card) {
+    // const data = {
+    //   user_id: JSON.parse(sessionStorage.getItem('user')).id,
+    //   board_id: JSON.parse(sessionStorage.getItem('userBoard')).id,
+    //   card_id: card.id
+    // };
+
+    const data = {
+      user_id: 1,
+      board_id: 1,
+      card_id: 1
+    }
+
+    this.loteriaService.onCardSelect(data)
+  }
+
+  onWin(params) {
+    this.loteriaService.onWin(params)
+  }
 }
