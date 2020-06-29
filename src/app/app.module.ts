@@ -11,9 +11,9 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WelcomeComponent } from './views/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MaterialModule } from './material';
 import { BoardComponent } from './components/board/board.component';
+import { ParallaxComponent } from './components/parallax/parallax.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { BoardComponent } from './components/board/board.component';
     NavbarComponent,
     WelcomeComponent,
     BoardComponent,
+    ParallaxComponent,
   ],
   imports: [
     MaterialModule,
