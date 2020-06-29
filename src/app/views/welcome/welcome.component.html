@@ -1,7 +1,82 @@
-<div class='container'>
-  <div class='columns is-mobile is-centered is-vcentered'>
-    <h1 class='title is-1 has-text-centered' style="margin-top: 100px;">
-      Welcome to our shitty collective
-    </h1>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+  </head>
+</head>
+
+<body>
+  <header class="parallax-completo">
+    <div class="texto-parallax">
+      <h1 class="animate__animated animate__bounceInDown" style="font-size: 40px;font-weight: 300"><b>¡BIENVENIDO AL JUEGO DE LA LOTERÍA!</b></h1>
+      <h2 class="animate__animated animate__bounceInDown" style="font-size: 25px;font-weight: 300"><b>¡DIVIERTE Y PASALA BIEN CON TUS AMIGOS!</b></h2>
+
+    </div>
+  </header>
+  <section class="centrar espacio">
+    <div class="centrar espacio" style="justify-content: center; align-items: center;">
+      <h2 class="instrucciones animate__animated animate__backInLeft">
+        <b>¡CONOCE LAS FORMAS DE GANAR!</b>
+      </h2>
+    </div>
+    <mat-grid-list cols="3" rowHeight="2:2" style="margin-top:50px;">
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>CARTA LLENA</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3333/img/waystowin/llena.png" class="card-image"
+            style="height: 50vh;width: 100%;margin-left:4px">
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Centro</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3333/img/waystowin/centro.png" class="card-image"
+            style="height: 50vh;width: 100%;margin-left:4px">
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Diagonal</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3333/img/waystowin/diagonal.png" class="card-image"
+            style="height: 50vh;width: 100%;margin-left:4px">
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="2:2">
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Vertical</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3333/img/waystowin/vertical.png" class="card-image"
+            style="height: 50vh;width: 100%;margin-left:3px">
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Horizontal</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3333/img/waystowin/horizontal.png" class="card-image"
+            style="height: 50vh;width: 100%;margin-left:3px">
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+  <section class="parallax-chico">
+
+  </section>
+</body>
+
+</html>

@@ -13,7 +13,8 @@ import { WelcomeComponent } from './views/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { BoardComponent } from './components/board/board.component';
-import { ParallaxComponent } from './components/parallax/parallax.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,6 @@ import { ParallaxComponent } from './components/parallax/parallax.component';
     NavbarComponent,
     WelcomeComponent,
     BoardComponent,
-    ParallaxComponent,
   ],
   imports: [
     MaterialModule,
@@ -31,7 +31,9 @@ import { ParallaxComponent } from './components/parallax/parallax.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
