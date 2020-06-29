@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit  {
       data => {
         console.log(data);
         this.userService.setToken(data.token);
-        this.loteriaService.onJoin(data.id)
+        //this.loteriaService.onJoin(data.id)
         sessionStorage.setItem('user', JSON.stringify(data));
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('lobby');
       },
       error => {
         switch (error.status) {

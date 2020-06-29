@@ -15,6 +15,8 @@ import { MaterialModule } from './material';
 import { BoardComponent } from './components/board/board.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { LobbyComponent } from './views/lobby/lobby.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     NavbarComponent,
     WelcomeComponent,
     BoardComponent,
+    LobbyComponent,
   ],
   imports: [
     MaterialModule,
@@ -33,7 +36,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSidenavModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit {
         } else {
           this.userService.setToken(data.token);
           sessionStorage.setItem('user', JSON.stringify(data));
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('lobby');
         }
       },
       error => {

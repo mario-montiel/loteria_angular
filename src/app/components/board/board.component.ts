@@ -35,10 +35,10 @@ export class BoardComponent implements OnInit {
       card_id: 1
     }
 
-    this.loteriaService.onCardSelect(data)
+    //this.loteriaService.onCardSelect(data)
   }
 
   onWin(params) {
-    this.loteriaService.onWin(params)
+    //this.loteriaService.onWin(params)
   }
 }

@@ -11,16 +11,22 @@ export class LoteriaService {
     this.ws = Ws('ws://localhost:3333', { path: 'ws' })
   }
 
-  suscribe() {
+  subscribe() {
     this.ws.connect()
     this.socket = this.ws.subscribe('loteria')
   }
 
-  onJoin(user) {
-    this.socket.emit('join', user.id)
+  emitJoin(user_id) {
+    this.socket.emit('join', user_id)
   }
 
-  onCardSelect(cardClicked) {
+  emitClose(user_id) {
+    this.socket.emit('close', user_id)
+  }
+
+  getSocket() { return this.socket }
+
+  /*onCardSelect(cardClicked) {
     // console.log(cardClicked);
     this.socket.emit('cardSelect', cardClicked)
     this.socket.on('cardSelect', (data: any) => {
@@ -28,17 +34,12 @@ export class LoteriaService {
       // this.responseCard = (data)
       // console.log(this.responseCard);
     })
-  }
+  }*/
 
-  onWin(params) {
+  /*onWin(params) {
     this.socket.emit('win', params)
     this.socket.on('onWin', (data: any) => {
       console.log(data);
     })
-  }
-
-  onClose(params) {
-    this.socket.emit('close', params)
-    return { message: 'Juego terminado madafakers' }
-  }
+  }*/
 }
