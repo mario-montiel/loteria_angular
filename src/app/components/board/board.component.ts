@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Picture } from 'src/app/assets/image';
-import Ws from 'adonis-websocket-client';
+//import { Picture } from 'src/app/assets/image';
+import { Ws } from '@adonisjs/websocket-client'
 
 @Component({
   selector: 'app-board',
@@ -12,12 +12,13 @@ export class BoardComponent implements OnInit {
   socket: any;
   constructor() { }
 
-  ngOnInit(): void { this.connectWS(); }
+  ngOnInit(): void {
+    this.ws = Ws('ws://localhost:3333')
+    this.connectWS()
+  }
 
   connectWS() {
-    this.ws = Ws('ws://127.0.0.1:3333');
     this.ws.connect();
-
     this.socket = this.ws.subscribe('loteria');
   }
 }
