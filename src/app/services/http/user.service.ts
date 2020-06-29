@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable'
 import { CookieService } from 'ngx-cookie-service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class UserService {
   baseUrl = 'http://127.0.0.1:3333/api/';
 
