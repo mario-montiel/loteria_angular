@@ -5,6 +5,7 @@ import Ws from '@adonisjs/websocket-client';
 export class LoteriaService {
   socket: any
   ws: any
+  responseCard: any[]
 
   constructor() {
     this.ws = Ws('ws://localhost:3333', { path: 'ws' })
@@ -15,7 +16,29 @@ export class LoteriaService {
     this.socket = this.ws.subscribe('loteria')
   }
 
-  onCardSelect(x) {
-    console.log(x);
+  onJoin(user) {
+    this.socket.emit('join', user.id)
+  }
+
+  onCardSelect(cardClicked) {
+    // console.log(cardClicked);
+    this.socket.emit('cardSelect', cardClicked)
+    this.socket.on('cardSelect', (data: any) => {
+      console.log(data)
+      // this.responseCard = (data)
+      // console.log(this.responseCard);
+    })
+  }
+
+  onWin(params) {
+    this.socket.emit('win', params)
+    this.socket.on('onWin', (data: any) => {
+      console.log(data);
+    })
+  }
+
+  onClose(params) {
+    this.socket.emit('close', params)
+    return { message: 'Juego terminado madafakers' }
   }
 }
