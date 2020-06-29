@@ -3,12 +3,11 @@ import { Ws } from '@adonisjs/websocket-client';
 
 @Injectable({ providedIn: 'root' })
 export class LoteriaService {
-  baseUrl = 'http://127.0.0.1:3333/api/'
   socket: any
   ws: any
 
   constructor() {
-    this.ws = Ws('ws://localhost:3333')
+    this.ws = Ws('ws://localhost:3333/ws')
   }
 
   suscribe() {
