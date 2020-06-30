@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { LoteriaService } from './services/ws/loteria.service';
+import { UserService } from './services/http/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'client';
+  title = 'Loteria'
+
+  constructor(private loteriaService: LoteriaService,
+  private userService: UserService) {
+    loteriaService.subscribe()
+  }
+
+  @HostListener('window:unload', [ '$event' ])
+  unloadHandler(event) {
+    close()
+  }
+
+  @HostListener('window:beforeunload', [ '$event' ])
+  beforeUnloadHandler(event) {
+    close()
+  }
+
+  close(): void {
+    let user = JSON.parse(sessionStorage.getItem('user'))
+
+    if (user != null) { this.loteriaService.emitClose(user.id) }
+
+    this.userService.logout()
+  }
 }

@@ -24,10 +24,9 @@ export class LoginComponent implements OnInit  {
     const user = this.formLogin.value;
     this.userService.login(user).subscribe(
       data => {
-        console.log(data);
         this.userService.setToken(data.token);
-        //this.loteriaService.onJoin(data.id)
         sessionStorage.setItem('user', JSON.stringify(data));
+
         this.router.navigateByUrl('lobby');
       },
       error => {
@@ -41,6 +40,7 @@ export class LoginComponent implements OnInit  {
             break;
           }
         }
+        console.log(error)
         console.log(error.status, error.statusText);
       }
     );
