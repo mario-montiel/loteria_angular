@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/http/user.service';
 import { Router } from '@angular/router';
+import { LoteriaService } from 'src/app/services/ws/loteria.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,13 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   username: string
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router,
+    private loteriaService: LoteriaService) { }
 
   logout() {
+    let user = JSON.parse(sessionStorage.getItem('user'))
+    this.loteriaService.emitClose(user.id)
+
     sessionStorage.removeItem('user')
     this.userService.logout()
     this.router.navigateByUrl('')
@@ -19,10 +24,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userService.hasToken()) {
-      console.log(sessionStorage.getItem('user'))
       let user = JSON.parse(sessionStorage.getItem('user'))
       this.username = user.username
-      console.log(this.username)
     }
   }
 }
