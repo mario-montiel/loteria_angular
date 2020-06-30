@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { WinComponent } from '../dialogs/win/win.component';
 
 @Component({
   selector: 'app-board',
@@ -9,16 +12,19 @@ import { JsonPipe } from '@angular/common';
 })
 export class BoardComponent implements OnInit {
   isActive = false;
-  constructor(private loteriaService: LoteriaService) {
+  user: any
+  board: any
+  currCard = ""
+
+  constructor(private loteriaService: LoteriaService, private router: Router, public dialog: MatDialog) {
+    this.user = JSON.parse(sessionStorage.getItem('user'))
+    this.board = router.getCurrentNavigation().extras.state
+
+    this.onData()
   }
 
   ngOnInit(): void {
-    this.onJoin();
-  }
-
-  onJoin() {
-    sessionStorage.getItem('user');
-    console.log(sessionStorage.getItem('user'));
+    // this.userID = JSON.parse(sessionStorage.getItem('user'))
   }
 
   public onCardSelect(card) {
@@ -38,6 +44,22 @@ export class BoardComponent implements OnInit {
   }
 
   onWin(params) {
-    //this.loteriaService.onWin(params)
+    const data = {
+      id: JSON.parse(sessionStorage.getItem('user')).id,
+      como: params
+    }
+    this.loteriaService.onWin(data)
+    let socket = this.loteriaService.getSocket()
+    socket.on('onWin', (whoWin: any) => {
+      // console.log('WTF: ', whoWin);
+      this.dialog.open(WinComponent);
+    })
+  }
+
+  onData() {
+    let socket = this.loteriaService.getSocket()
+    socket.on('card', (card) => {
+      this.currCard = card.path
+    })
   }
 }

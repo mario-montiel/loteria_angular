@@ -13,12 +13,12 @@ export class NavbarComponent implements OnInit {
   ws: any
   socket: any
   username: string
-  constructor(public userService: UserService, public router: Router) { 
-    this.ws = Ws('ws://localhost:3333', { path: 'ws' })
-    this.ws.connect()
-    this.socket = this.ws.subscribe('loteria')
-    this.socket.close()
-  }
+  constructor(public userService: UserService, public router: Router, private loteriaService: LoteriaService) {
+      const socket = this.loteriaService.getSocket()
+      socket.on('error', (fuckError) => {
+        console.log(fuckError)
+      })
+    }
 
   logout() {
     let user = JSON.parse(sessionStorage.getItem('user'))

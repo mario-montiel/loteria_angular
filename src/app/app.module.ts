@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LobbyComponent } from './views/lobby/lobby.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { WinComponent } from './components/dialogs/win/win.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     WelcomeComponent,
     BoardComponent,
     LobbyComponent,
+    WinComponent,
   ],
+  entryComponents: [WinComponent],
   imports: [
     MaterialModule,
     BrowserModule,
