@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-win',
-  templateUrl: './win.component.html',
-  styleUrls: ['./win.component.sass']
+  selector: 'app-loser',
+  templateUrl: './loser.component.html',
+  styleUrls: ['./loser.component.sass']
 })
-export class WinComponent implements OnInit {
+export class LoserComponent implements OnInit {
   player: string
   constructor() { }
 
