@@ -11,7 +11,12 @@ import { LoteriaService } from 'src/app/services/ws/loteria.service';
 export class NavbarComponent implements OnInit {
   username: string
   constructor(public userService: UserService, public router: Router,
-    private loteriaService: LoteriaService) { }
+    private loteriaService: LoteriaService) {
+      let socket = this.loteriaService.getSocket()
+      socket.on('error', (fuckError) => {
+        console.log(fuckError)
+      })
+    }
 
   logout() {
     let user = JSON.parse(sessionStorage.getItem('user'))
