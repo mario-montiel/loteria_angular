@@ -26,7 +26,13 @@ export class LobbyComponent implements OnInit {
   getInfo(): void {
     let socket = this.loteriaService.getSocket()
     socket.on('connUser', (newUser) => {
-      this.activeUsers.push(JSON.parse(newUser))
+      this.activeUsers.push(newUser)
+    })
+    socket.on('dessUser', (oldUser) => {
+      console.log(oldUser)
+      this.activeUsers.splice(
+        this.activeUsers.findIndex(oldUser)
+      )
     })
   }
 
