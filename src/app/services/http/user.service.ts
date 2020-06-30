@@ -36,10 +36,8 @@ export class UserService {
     if (token == null || token == '') {
       return false
     }
-
     return true
   }
-
   private request(method: string, route: string, body?: undefined)
   : Observable<any> {
     let fullUrl = this.baseUrl + route

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
+  username: string
   constructor(public userService: UserService, public router: Router) { }
 
   logout() {
@@ -20,6 +21,8 @@ export class NavbarComponent implements OnInit {
     if (this.userService.hasToken()) {
       console.log(sessionStorage.getItem('user'))
       let user = JSON.parse(sessionStorage.getItem('user'))
+      this.username = user.username
+      console.log(this.username)
     }
   }
 }

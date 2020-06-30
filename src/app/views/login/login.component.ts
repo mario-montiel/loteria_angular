@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit  {
             break;
           }
         }
-        console.log(error.status, error.statusText);
+        console.log(error);
       }
     );
   }
