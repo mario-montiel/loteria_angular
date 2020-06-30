@@ -50,8 +50,15 @@ export class BoardComponent implements OnInit {
   }
 
   onWin(params) {
-    this.loteriaService.onWin(params)
+    const data = {
+      id:1,
+      como:params
+    }
+    this.socket.emit('win', data)
   }
+  /*onWin(params) {
+    //this.loteriaService.onWin(params)
+  }*/
 
   onData() {
     let socket = this.loteriaService.getSocket()
