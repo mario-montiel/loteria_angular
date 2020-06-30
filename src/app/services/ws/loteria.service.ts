@@ -39,10 +39,10 @@ export class LoteriaService {
     })
   }*/
 
-  /*onWin(params) {
+  onWin(params) {
     this.socket.emit('win', params)
-    this.socket.on('onWin', (data: any) => {
+    /*this.socket.on('onWin', (data: any) => {
       console.log(data);
-    })
-  }*/
+    })*/
+  }
 }

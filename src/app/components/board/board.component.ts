@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
 import { JsonPipe } from '@angular/common';
+import Ws from '@adonisjs/websocket-client';
 
 @Component({
   selector: 'app-board',
@@ -8,8 +9,13 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./board.component.sass']
 })
 export class BoardComponent implements OnInit {
+  socket: any
+  ws: any
   isActive = false;
   constructor(private loteriaService: LoteriaService) {
+    this.ws = Ws('ws://localhost:3333', { path: 'ws' })
+    this.ws.connect()
+    this.socket = this.ws.subscribe('loteria')
   }
 
   ngOnInit(): void {
@@ -34,10 +40,14 @@ export class BoardComponent implements OnInit {
       card_id: 1
     }
 
-    //this.loteriaService.onCardSelect(data)
+    // this.loteriaService.onCardSelect(data)
   }
 
   onWin(params) {
-    //this.loteriaService.onWin(params)
+    const data = {
+      id:1,
+      como:params
+    }
+    this.socket.emit('win', data)
   }
 }
