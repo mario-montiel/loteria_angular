@@ -65,5 +65,25 @@ export class BoardComponent implements OnInit {
     socket.on('card', (card) => {
       this.currCard = card.path
     })
+
+    /* PARA EMITIR WIN: this.loteriaService.emitWin(data)  */
+    socket.on('onWin', (data) => {
+      switch(data.win) {
+        case 'draw':
+          // TODOS
+          // Muestra que empataron y que todos estan pendejos
+          break
+        case 'yes':
+          // TODOS
+          // Muestra el ganador mostrando el data.id
+          break
+        case 'no':
+          // Individual
+          // Verfifica el data.id con el id del sessionStorage, si smn,
+          // se le muestra al usuario que esta bien estupido y que aun no gana
+          break
+        case
+      }
+    })
   }
 }
