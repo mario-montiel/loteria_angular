@@ -9,14 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./board.component.sass']
 })
 export class BoardComponent implements OnInit {
+  socket: any
   isActive = false;
   user: any
   board: any
+  imagenes: any[] = []
   currCard = ""
 
   constructor(private loteriaService: LoteriaService, private router: Router) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     this.board = router.getCurrentNavigation().extras.state
+    let i = 0
+    this.board.cards.forEach(item =>{
+      this.imagenes[i] = item.path
+      i++
+    })
+    console.log(this.imagenes[0])
 
     this.onData()
   }
@@ -30,6 +38,7 @@ export class BoardComponent implements OnInit {
     //   board_id: JSON.parse(sessionStorage.getItem('userBoard')).id,
     //   card_id: card.id
     // };
+    console.log(this.board.cards)
 
     const data = {
       user_id: 1,
@@ -37,9 +46,16 @@ export class BoardComponent implements OnInit {
       card_id: 1
     }
 
-    //this.loteriaService.onCardSelect(data)
+    // this.loteriaService.onCardSelect(data)
   }
 
+  onWin(params) {
+    const data = {
+      id:1,
+      como:params
+    }
+    this.socket.emit('win', data)
+  }
   /*onWin(params) {
     //this.loteriaService.onWin(params)
   }*/
