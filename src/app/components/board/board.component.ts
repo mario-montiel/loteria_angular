@@ -66,7 +66,7 @@ export class BoardComponent implements OnInit {
           // Verfifica el data.id con el id del sessionStorage, si smn,
           // se le muestra al usuario que esta bien estupido y que aun no gana
           break
-        case
+       
       }
     })
   }
