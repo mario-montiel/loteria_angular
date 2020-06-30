@@ -22,6 +22,10 @@ export class UserService {
     return this.request('post', 'signup', user)
   }
 
+  activeUsers(): Observable<any> {
+    return this.request('get', 'users/active')
+  }
+
   setToken(token: string) {
     this.cookies.set('token', token)
   }
