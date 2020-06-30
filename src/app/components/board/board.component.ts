@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -9,16 +10,15 @@ import { JsonPipe } from '@angular/common';
 })
 export class BoardComponent implements OnInit {
   isActive = false;
-  constructor(private loteriaService: LoteriaService) {
+  user: any
+  board: any
+
+  constructor(private loteriaService: LoteriaService, private router: Router) {
+    this.user = JSON.parse(sessionStorage.getItem('user'))
+    this.board = router.getCurrentNavigation().extras.state
   }
 
   ngOnInit(): void {
-    this.onJoin();
-  }
-
-  onJoin() {
-    sessionStorage.getItem('user');
-    console.log(sessionStorage.getItem('user'));
   }
 
   public onCardSelect(card) {
@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
     //this.loteriaService.onCardSelect(data)
   }
 
-  onWin(params) {
+  /*onWin(params) {
     //this.loteriaService.onWin(params)
-  }
+  }*/
 }
