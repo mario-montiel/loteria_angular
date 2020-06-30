@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
 import { UserService } from 'src/app/services/http/user.service';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lobby',
@@ -12,9 +13,10 @@ export class LobbyComponent implements OnInit {
   activeUsers: User[]
   user: any
   message = 'Esperando usuarios...'
+  board: any
 
   constructor(private loteriaService: LoteriaService,
-  private userService: UserService) {
+  private userService: UserService, private router: Router) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     loteriaService.emitJoin(this.user.id)
 
@@ -47,12 +49,17 @@ export class LobbyComponent implements OnInit {
           break
         case 'START':
           // Aquí empieza el desmadre
-          alert('A los putazos')
+          this.router.navigateByUrl('board', {state: this.board})
           break
       }
     })
     socket.on('timer', (seconds) => {
       this.message = 'Preparando juego en ' + seconds + ' segundos'
+    })
+    socket.on('boards', (board) => {
+      if (board.user_id == this.user.id) {
+        this.board = board
+      }
     })
   }
 
