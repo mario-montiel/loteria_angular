@@ -52,7 +52,7 @@ export class LobbyComponent implements OnInit {
       }
     })
     socket.on('timer', (seconds) => {
-      this.message = 'Preparando juego en ' + seconds + 'segundos'
+      this.message = 'Preparando juego en ' + seconds + ' segundos'
     })
   }
 
