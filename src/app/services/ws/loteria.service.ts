@@ -27,6 +27,10 @@ export class LoteriaService {
     this.socket.emit('cardSelect', data)
   }
 
+  emitWin(data) {
+    this.socket.emit('win', data)
+  }
+
   getSocket() { return this.socket }
 
   /*onCardSelect(cardClicked) {
