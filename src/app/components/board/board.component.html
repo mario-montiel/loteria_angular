@@ -16,9 +16,9 @@
 	<img class="imagen col" (click)="onCardSelect(15)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
 	<img class="imagen col" (click)="onCardSelect(16)" src="http://127.0.0.1:3333/img/cards/cotorro.png">
 </mat-card>
-<img class="carta" [class.mat-elevation-z15]="!isActive" src="http://127.0.0.1:3333/img/cards/cotorro.png">
+<img #currentCard class="carta" [class.mat-elevation-z15]="!isActive" src="{{ 'http://127.0.0.1:3333/' + currCard}}">
 <mat-card class="ganar">
-	<h1>Ganaste?:</h1>
+	<h1>¿Ganaste?</h1>
 	<button mat-raised-button class="col">Loteria</button>
 	<button mat-raised-button class="col">Centro</button>
 	<button mat-raised-button class="col">Llena</button>

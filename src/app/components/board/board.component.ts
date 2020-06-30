@@ -12,10 +12,13 @@ export class BoardComponent implements OnInit {
   isActive = false;
   user: any
   board: any
+  currCard = ""
 
   constructor(private loteriaService: LoteriaService, private router: Router) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     this.board = router.getCurrentNavigation().extras.state
+
+    this.onData()
   }
 
   ngOnInit(): void {
@@ -40,4 +43,11 @@ export class BoardComponent implements OnInit {
   /*onWin(params) {
     //this.loteriaService.onWin(params)
   }*/
+
+  onData() {
+    let socket = this.loteriaService.getSocket()
+    socket.on('card', (card) => {
+      this.currCard = card.path
+    })
+  }
 }
