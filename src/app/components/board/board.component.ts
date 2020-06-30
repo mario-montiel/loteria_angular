@@ -14,6 +14,7 @@ export class BoardComponent implements OnInit {
   user: any
   board: any
   imagenes: any[] = []
+  currCard = ""
 
   constructor(private loteriaService: LoteriaService, private router: Router) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
@@ -24,6 +25,8 @@ export class BoardComponent implements OnInit {
       i++
     })
     console.log(this.imagenes[0])
+
+    this.onData()
   }
 
   ngOnInit(): void {
@@ -47,10 +50,13 @@ export class BoardComponent implements OnInit {
   }
 
   onWin(params) {
-    const data = {
-      id:1,
-      como:params
-    }
-    this.socket.emit('win', data)
+    this.loteriaService.onWin(params)
+  }
+
+  onData() {
+    let socket = this.loteriaService.getSocket()
+    socket.on('card', (card) => {
+      this.currCard = card.path
+    })
   }
 }
