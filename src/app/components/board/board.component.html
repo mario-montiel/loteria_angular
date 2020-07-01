@@ -1,32 +1,12 @@
-<mat-card class="tablero" [class.mat-elevation-z15]="!isActive">
-	<img class="imagen" (click)="onCardSelect(0)" src="{{'http://127.0.0.1:3333/' + imagenes[0]}}">
-	<img class="imagen col" (click)="onCardSelect(1)" src="{{'http://127.0.0.1:3333/' + imagenes[1]}}">
-	<img class="imagen col" (click)="onCardSelect(2)" src="{{'http://127.0.0.1:3333/' + imagenes[2]}}">
-	<img class="imagen col" (click)="onCardSelect(3)" src="{{'http://127.0.0.1:3333/' + imagenes[3]}}">
-	<img class="imagen" (click)="onCardSelect(4)" src="{{'http://127.0.0.1:3333/' + imagenes[4]}}">
-	<img class="imagen col" (click)="onCardSelect(5)" src="{{'http://127.0.0.1:3333/' + imagenes[5]}}">
-	<img class="imagen col" (click)="onCardSelect(6)" src="{{'http://127.0.0.1:3333/' + imagenes[6]}}">
-	<img class="imagen col" (click)="onCardSelect(7)" src="{{'http://127.0.0.1:3333/' + imagenes[7]}}">
-	<img class="imagen" (click)="onCardSelect(8)" src="{{'http://127.0.0.1:3333/' + imagenes[8]}}">
-	<img class="imagen col" (click)="onCardSelect(9)" src="{{'http://127.0.0.1:3333/' + imagenes[9]}}">
-	<img class="imagen col" (click)="onCardSelect(10)" src="{{'http://127.0.0.1:3333/' + imagenes[10]}}">
-	<img class="imagen col" (click)="onCardSelect(11)" src="{{'http://127.0.0.1:3333/' + imagenes[11]}}">
-	<img class="imagen" (click)="onCardSelect(12)" src="{{'http://127.0.0.1:3333/' + imagenes[12]}}">
-	<img class="imagen col" (click)="onCardSelect(13)" src="{{'http://127.0.0.1:3333/' + imagenes[13]}}">
-	<img class="imagen col" (click)="onCardSelect(14)" src="{{'http://127.0.0.1:3333/' + imagenes[14]}}">
-	<img class="imagen col" (click)="onCardSelect(15)" src="{{'http://127.0.0.1:3333/' + imagenes[15]}}">
+<mat-card class="tablero mat-elevation-z15">
+  <img *ngFor='let card of board.cards' class="imagen col" data-id="{{card.id}}"
+  (click)="onCardSelect(card.id)" src="{{'http://127.0.0.1:3333/'+card.path}}">
 </mat-card>
-<img class="carta" [class.mat-elevation-z15]="!isActive" src="{{'http://127.0.0.1:3333/' + currCard}}">
+
+<img class='carta mat-elevation-z15' src="{{'http://127.0.0.1:3333/' + currCard}}">
 <mat-card class="ganar">
-<<<<<<< HEAD
-	<h1>¿Ganaste?</h1>
-	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
-	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
-	<button mat-raised-button (click)="onWin('llena')" class="col">Llena</button>
-=======
 	<h1>Ganaste?:</h1>
 	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
 	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
 	<button mat-raised-button (click)="onWin('full')" class="col">Llena</button>
->>>>>>> d75310a8a1070dd6e33198402b4b68202c708585
 </mat-card>
