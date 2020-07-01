@@ -44,7 +44,6 @@ export class LoteriaService {
   }*/
 
   onWin(params) {
-    // console.log('ID: ', params);
     this.socket.emit('win', params)
   }
 }
