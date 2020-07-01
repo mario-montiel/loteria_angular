@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-win',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinComponent implements OnInit {
   player: string
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<WinComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+
+    console.log('data passed in is:', this.data);
+  }
 
   ngOnInit(): void {
     this.player = JSON.parse(sessionStorage.getItem('user')).username
