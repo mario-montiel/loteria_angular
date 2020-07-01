@@ -18,8 +18,15 @@
 </mat-card>
 <img class="carta" [class.mat-elevation-z15]="!isActive" src="{{'http://127.0.0.1:3333/' + currCard}}">
 <mat-card class="ganar">
+<<<<<<< HEAD
+	<h1>¿Ganaste?</h1>
+	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
+	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
+	<button mat-raised-button (click)="onWin('llena')" class="col">Llena</button>
+=======
 	<h1>Ganaste?:</h1>
 	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
 	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
 	<button mat-raised-button (click)="onWin('full')" class="col">Llena</button>
+>>>>>>> d75310a8a1070dd6e33198402b4b68202c708585
 </mat-card>

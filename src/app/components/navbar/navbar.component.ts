@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/http/user.service';
 import { Router } from '@angular/router';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
+import Ws from '@adonisjs/websocket-client';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,11 @@ import { LoteriaService } from 'src/app/services/ws/loteria.service';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
+  ws: any
+  socket: any
   username: string
-  constructor(public userService: UserService, public router: Router,
-    private loteriaService: LoteriaService) {
-      let socket = this.loteriaService.getSocket()
+  constructor(public userService: UserService, public router: Router, private loteriaService: LoteriaService) {
+      const socket = this.loteriaService.getSocket()
       socket.on('error', (fuckError) => {
         console.log(fuckError)
       })
@@ -20,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     let user = JSON.parse(sessionStorage.getItem('user'))
-    this.loteriaService.emitClose(user.id)
+    this.socket.emitClose(user.id)
 
     sessionStorage.removeItem('user')
     this.userService.logout()

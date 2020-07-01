@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoteriaService } from 'src/app/services/ws/loteria.service';
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { WinComponent } from '../dialogs/win/win.component';
+import { DrawComponent } from '../dialogs/draw/draw.component';
+import { LoserComponent } from '../dialogs/loser/loser.component';
 
 @Component({
   selector: 'app-board',
@@ -16,7 +20,7 @@ export class BoardComponent implements OnInit {
   imagenes: any[] = []
   currCard = ""
 
-  constructor(private loteriaService: LoteriaService, private router: Router) {
+  constructor(private loteriaService: LoteriaService, private router: Router, public dialog: MatDialog) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     this.board = router.getCurrentNavigation().extras.state
     let i = 0
@@ -30,6 +34,8 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.userID = JSON.parse(sessionStorage.getItem('user'))
+    console.log(sessionStorage.getItem('user'));
   }
 
   public onCardSelect(card) {
@@ -51,14 +57,11 @@ export class BoardComponent implements OnInit {
 
   onWin(params) {
     const data = {
-      id:1,
-      como:params
+      id: JSON.parse(sessionStorage.getItem('user')).id,
+      como: params
     }
-    this.socket.emit('win', data)
+    this.loteriaService.onWin(data)
   }
-  /*onWin(params) {
-    //this.loteriaService.onWin(params)
-  }*/
 
   onData() {
     let socket = this.loteriaService.getSocket()
@@ -71,18 +74,17 @@ export class BoardComponent implements OnInit {
       switch(data.win) {
         case 'draw':
           // TODOS
-          // Muestra que empataron y que todos estan pendejos
+            this.dialog.open(DrawComponent);
           break
         case 'yes':
           // TODOS
-          // Muestra el ganador mostrando el data.id
+            this.dialog.open(WinComponent);
           break
         case 'no':
           // Individual
           // Verfifica el data.id con el id del sessionStorage, si smn,
-          // se le muestra al usuario que esta bien estupido y que aun no gana
+            this.dialog.open(LoserComponent);
           break
-       
       }
     })
   }

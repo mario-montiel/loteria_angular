@@ -17,6 +17,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LobbyComponent } from './views/lobby/lobby.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { WinComponent } from './components/dialogs/win/win.component';
+import { DrawComponent } from './components/dialogs/draw/draw.component';
+import { LoserComponent } from './components/dialogs/loser/loser.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     WelcomeComponent,
     BoardComponent,
     LobbyComponent,
+    WinComponent,
+    DrawComponent,
+    LoserComponent,
   ],
+  entryComponents: [WinComponent, DrawComponent, LoserComponent],
   imports: [
     MaterialModule,
     BrowserModule,
