@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit {
 
     this.onData()
   }
-
+ 
   ngOnInit(): void {
     // this.userID = JSON.parse(sessionStorage.getItem('user'))
     console.log(sessionStorage.getItem('user'));

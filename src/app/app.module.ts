@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { WinComponent } from './components/dialogs/win/win.component';
 import { DrawComponent } from './components/dialogs/draw/draw.component';
 import { LoserComponent } from './components/dialogs/loser/loser.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoserComponent } from './components/dialogs/loser/loser.component';
     WinComponent,
     DrawComponent,
     LoserComponent,
+    
   ],
   entryComponents: [WinComponent, DrawComponent, LoserComponent],
   imports: [
@@ -44,7 +46,8 @@ import { LoserComponent } from './components/dialogs/loser/loser.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatExpansionModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
