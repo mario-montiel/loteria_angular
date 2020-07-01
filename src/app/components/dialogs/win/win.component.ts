@@ -10,12 +10,9 @@ export class WinComponent implements OnInit {
   player: string
   constructor(public dialogRef: MatDialogRef<WinComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-
-    console.log('data passed in is:', this.data);
+      this.player = this.data.username
   }
 
-  ngOnInit(): void {
-    this.player = JSON.parse(sessionStorage.getItem('user')).username
-  }
+  ngOnInit(): void {}
 
 }
