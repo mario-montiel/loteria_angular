@@ -1,11 +1,12 @@
 <mat-card class="tablero mat-elevation-z15">
-  <img *ngFor='let card of board.cards' class="imagen col" data-id="{{card.id}}"
-  (click)="onCardSelect(card.id)" src="{{'http://127.0.0.1:3333/'+card.path}}">
+  <img *ngFor='let card of board.cards' [class.selected]='card.pivot.selected'
+  class="imagen col" data-id="{{card.id}}" (click)="onCardSelect(card.id)"
+  src="{{'http://127.0.0.1:3333/'+card.path}}">
 </mat-card>
 
 <img class='carta mat-elevation-z15' src="{{'http://127.0.0.1:3333/' + currCard}}">
 <mat-card class="ganar">
-	<h1>Ganaste?:</h1>
+	<h1>¿Ganaste?</h1>
 	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
 	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
 	<button mat-raised-button (click)="onWin('full')" class="col">Llena</button>

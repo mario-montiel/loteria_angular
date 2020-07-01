@@ -20,19 +20,21 @@ export class BoardComponent implements OnInit {
   constructor(private loteriaService: LoteriaService, private router: Router, public dialog: MatDialog) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     this.board = router.getCurrentNavigation().extras.state
+    console.log(this.board)
+
     this.onData()
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   public onCardSelect(card_id) {
     let data = {
       user_id: this.user.id,
       board_id: this.board.id,
       card_id: card_id
-   };
+    };
 
-   this.loteriaService.emitCardSelect(data)
+    this.loteriaService.emitCardSelect(data)
   }
 
   onWin(params) {
@@ -52,24 +54,31 @@ export class BoardComponent implements OnInit {
       if (data.user_id == this.user.id && data.success) {
         //angular
         data.card_id
+        this.board.cards.forEach(card => {
+          if (card.id == data.card_id) {
+            card.pivot.selected = 1
+          }
+        });
+
+        console.log(this.board.cards)
       }
     })
 
     /* PARA EMITIR WIN: this.loteriaService.emitWin(data)  */
     socket.on('onWin', (data) => {
-      switch(data.win) {
+      switch (data.win) {
         case 'draw':
           // TODOS
-            this.dialog.open(DrawComponent);
+          this.dialog.open(DrawComponent);
           break
         case 'yes':
           // TODOS
-            this.dialog.open(WinComponent);
+          this.dialog.open(WinComponent);
           break
         case 'no':
           // Individual
           // Verfifica el data.id con el id del sessionStorage, si smn,
-            this.dialog.open(LoserComponent);
+          this.dialog.open(LoserComponent);
           break
       }
     })
