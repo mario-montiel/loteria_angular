@@ -73,7 +73,11 @@ export class BoardComponent implements OnInit {
           break
         case 'yes':
           // TODOS
-          this.dialog.open(WinComponent);
+          this.dialog.open(WinComponent, {
+            data:{
+              username: data.username
+            }
+          });
           break
         case 'no':
           // Individual
