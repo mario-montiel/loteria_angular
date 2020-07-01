@@ -11,11 +11,9 @@
   </div>
   <div *ngIf='userService.hasToken()' class="navbar-item has-dropdown is-hoverable">
     <a class="navbar-link">
-      ?<b>Bienvenido {{ username }} </b>!
+      <b> {{ username }} </b>
     </a>
     <div class="navbar-dropdown">
-      <a class="navbar-item">
-      </a>
       <a class="navbar-item" (click)='logout()'>
         Log out
       </a>
