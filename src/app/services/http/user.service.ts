@@ -53,9 +53,13 @@ export class UserService {
       case 'post': {
         return this.http.post(fullUrl, body)
       }
+      case 'options': {
+        return this.http.options(fullUrl)
+      }
       default: {
         return this.http.get(fullUrl)
       }
     }
+    
   }
 }

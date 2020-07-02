@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit {
   socket: any
   user: any
   winButtons = true
+  selectedCards: any[] = []
 
   constructor(private loteriaService: LoteriaService, private router: Router,
   public dialog: MatDialog) {
@@ -36,13 +37,28 @@ export class BoardComponent implements OnInit {
       card_id: card_id
     };
 
+    this.board.cards.forEach(card => {
+      if (card.id == card_id && card.pivot.selected == 0) {
+        card.pivot.selected = 1
+        this.selectedCards.push(card_id)
+      }
+      else if (card.id == card_id && card.pivot.selected == 1) {
+        card.pivot.selected = 0
+        this.selectedCards.pop()
+      }
+    });
+    //console.log(this.selectedCards)
+    // console.log(this.selectedCards.pop())
+    
     // this.loteriaService.emitCardSelect(data)
   }
 
   onWin(params) {
+    // console.log(this.selectedCards)
     this.loteriaService.onWin({
       id: this.user.id,
-      como: params
+      como: params,
+      selectedCards: this.selectedCards
     })
   }
 

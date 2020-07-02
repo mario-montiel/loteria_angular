@@ -2,25 +2,23 @@
   <span routerLink='/' routerLinkActive='active'>Loteria</span>
   <span class="toolbar-spacer"></span>
   <div *ngIf='userService.hasToken() == false'>
-  <button mat-icon-button aria-label="Iniciar de sesión" routerLink='/login' routerLinkActive='active'>
-    <mat-icon>login</mat-icon>
-  </button>
-  <button mat-icon-button aria-label="Registrarse" routerLink='/signup' routerLinkActive='active'>
-    <mat-icon>person_add</mat-icon>
-  </button>
+    <button mat-icon-button aria-label="Iniciar de sesión" routerLink='/login' routerLinkActive='active'>
+      <mat-icon>login</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Registrarse" routerLink='/signup' routerLinkActive='active'>
+      <mat-icon>person_add</mat-icon>
+    </button>
   </div>
-        <div *ngIf='userService.hasToken()' class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">     
-            {{ username }}
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-            </a>
-            <a class="navbar-item" (click)='logout()'>
-              Log out
-            </a>
-          </div>
-        </div>
+  <div *ngIf='userService.hasToken()' class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">
+      <b> {{ username }} </b>
+    </a>
+    <div class="navbar-dropdown">
+      <a class="navbar-item" (click)='logout()'>
+        Log out
+      </a>
+    </div>
+  </div>
 </mat-toolbar>
 
 <!-- <nav class='navbar' role='navigation' aria-label='main navigation'>

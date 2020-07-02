@@ -24,8 +24,7 @@ export class LoginComponent implements OnInit  {
     this.userService.login(user).subscribe(
       data => {
         this.userService.setToken(data.token);
-        sessionStorage.setItem('user', JSON.stringify(data));
-
+        console.log(sessionStorage.setItem('user', JSON.stringify(data)));
         this.router.navigateByUrl('lobby');
       },
       error => {

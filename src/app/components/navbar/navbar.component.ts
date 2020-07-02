@@ -16,13 +16,14 @@ export class NavbarComponent implements OnInit {
       const socket = this.loteriaService.getSocket()
       socket.on('error', (fuckError) => {
         console.log(fuckError)
+        let user = JSON.parse(localStorage.getItem('user'))
+        this.username = user.username
       })
     }
 
   logout() {
     let user = JSON.parse(sessionStorage.getItem('user'))
     this.loteriaService.emitClose(user.id)
-
     sessionStorage.removeItem('user')
     this.userService.logout()
     this.router.navigateByUrl('')
