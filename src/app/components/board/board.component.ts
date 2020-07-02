@@ -16,8 +16,10 @@ export class BoardComponent implements OnInit {
   currCard = ""
   socket: any
   user: any
+  winButtons = true
 
-  constructor(private loteriaService: LoteriaService, private router: Router, public dialog: MatDialog) {
+  constructor(private loteriaService: LoteriaService, private router: Router,
+  public dialog: MatDialog) {
     this.user = JSON.parse(sessionStorage.getItem('user'))
     this.board = router.getCurrentNavigation().extras.state
     console.log(this.board)
@@ -59,8 +61,6 @@ export class BoardComponent implements OnInit {
             card.pivot.selected = 1
           }
         });
-
-        console.log(this.board.cards)
       }
     })
 
@@ -69,9 +69,10 @@ export class BoardComponent implements OnInit {
       switch (data.win) {
         case 'draw':
           // TODOS
-          this.dialog.open(DrawComponent);
+          this.dialog.open(DrawComponent)
           break
         case 'yes':
+          this.winButtons = false
           // TODOS
           this.dialog.open(WinComponent, {
             data:{
@@ -81,8 +82,10 @@ export class BoardComponent implements OnInit {
           break
         case 'no':
           // Individual
-          // Verfifica el data.id con el id del sessionStorage, si smn,
-          this.dialog.open(LoserComponent);
+          // Verfifica el data.id con el id del sessionStorage, si smn
+          if (data.user_id == this.user.id) {
+            this.dialog.open(LoserComponent);
+          }
           break
       }
     })
