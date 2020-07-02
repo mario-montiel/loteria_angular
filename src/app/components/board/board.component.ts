@@ -16,6 +16,7 @@ export class BoardComponent implements OnInit {
   currCard = ""
   socket: any
   user: any
+  winButtons = true
 
   constructor(private loteriaService: LoteriaService, private router: Router,
   public dialog: MatDialog) {
@@ -71,6 +72,7 @@ export class BoardComponent implements OnInit {
           this.dialog.open(DrawComponent)
           break
         case 'yes':
+          this.winButtons = false
           // TODOS
           this.dialog.open(WinComponent, {
             data:{

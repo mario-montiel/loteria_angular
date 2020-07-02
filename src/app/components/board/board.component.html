@@ -7,7 +7,7 @@
 <img class='carta mat-elevation-z15' src="{{'http://127.0.0.1:3333/' + currCard}}">
 <mat-card class="ganar">
 	<h1>¿Ganaste?</h1>
-	<button mat-raised-button (click)="onWin('loteria')" class="col">Loteria</button>
-	<button mat-raised-button (click)="onWin('centro')" class="col">Centro</button>
-	<button mat-raised-button (click)="onWin('full')" class="col">Llena</button>
+	<button mat-raised-button [disabled]='!winButtons' (click)="onWin('loteria')" class="col">Loteria</button>
+	<button mat-raised-button [disabled]='!winButtons' (click)="onWin('centro')" class="col">Centro</button>
+	<button mat-raised-button [disabled]='!winButtons' (click)="onWin('full')" class="col">Llena</button>
 </mat-card>
