@@ -31,12 +31,6 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void { }
 
   public onCardSelect(card_id) {
-    let data = {
-      user_id: this.user.id,
-      board_id: this.board.id,
-      card_id: card_id
-    };
-
     this.board.cards.forEach(card => {
       if (card.id == card_id && card.pivot.selected == 0) {
         card.pivot.selected = 1
@@ -44,17 +38,12 @@ export class BoardComponent implements OnInit {
       }
       else if (card.id == card_id && card.pivot.selected == 1) {
         card.pivot.selected = 0
-        this.selectedCards.pop()
+        this.selectedCards = this.selectedCards.filter(id => id != card_id)
       }
     });
-    //console.log(this.selectedCards)
-    // console.log(this.selectedCards.pop())
-    
-    // this.loteriaService.emitCardSelect(data)
   }
 
   onWin(params) {
-    // console.log(this.selectedCards)
     this.loteriaService.onWin({
       id: this.user.id,
       como: params,
@@ -66,18 +55,6 @@ export class BoardComponent implements OnInit {
     let socket = this.loteriaService.getSocket()
     socket.on('card', (card) => {
       this.currCard = card.path
-    })
-
-    socket.on('cardSelect', (data) => {
-      if (data.user_id == this.user.id && data.success) {
-        //angular
-        data.card_id
-        this.board.cards.forEach(card => {
-          if (card.id == data.card_id) {
-            card.pivot.selected = 1
-          }
-        });
-      }
     })
 
     /* PARA EMITIR WIN: this.loteriaService.emitWin(data)  */
