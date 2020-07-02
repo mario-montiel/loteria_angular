@@ -16,8 +16,6 @@ export class NavbarComponent implements OnInit {
       const socket = this.loteriaService.getSocket()
       socket.on('error', (fuckError) => {
         console.log(fuckError)
-        let user = JSON.parse(localStorage.getItem('user'))
-        this.username = user.username
       })
     }
 
