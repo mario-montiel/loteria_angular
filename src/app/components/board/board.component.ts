@@ -36,7 +36,7 @@ export class BoardComponent implements OnInit {
       card_id: card_id
     };
 
-    this.loteriaService.emitCardSelect(data)
+    // this.loteriaService.emitCardSelect(data)
   }
 
   onWin(params) {
