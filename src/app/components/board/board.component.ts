@@ -16,7 +16,9 @@ export class BoardComponent implements OnInit {
   currCard = ""
   socket: any
   user: any
-  winButtons = true
+  winButtonsLoteria = true
+  winButtonsCentro = true
+  winButtonsFull = true
   selectedCards: any[] = []
 
   constructor(private loteriaService: LoteriaService, private router: Router,
@@ -65,13 +67,25 @@ export class BoardComponent implements OnInit {
           this.dialog.open(DrawComponent)
           break
         case 'yes':
-          this.winButtons = false
-          // TODOS
-          this.dialog.open(WinComponent, {
-            data:{
-              username: data.username
-            }
-          });
+          switch(data.forma){
+            case 'loteria':
+              this.winButtonsLoteria = false
+              break
+            case 'centro':
+              this.winButtonsCentro = false
+              break
+            case 'full':
+              this.winButtonsLoteria = false
+              this.winButtonsCentro = false
+              this.winButtonsFull = false
+              // TODOS
+              this.dialog.open(WinComponent, {
+                data:{
+                  username: data.username
+                }
+              });
+              break
+          }
           break
         case 'no':
           // Individual
