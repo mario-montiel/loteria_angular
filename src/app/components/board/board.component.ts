@@ -16,9 +16,15 @@ export class BoardComponent implements OnInit {
   currCard = ""
   socket: any
   user: any
+
   winButtonsLoteria = true
   winButtonsCentro = true
   winButtonsFull = true
+
+  loteriaWinner = ''
+  centroWinner = ''
+  fullWinner = ''
+
   selectedCards: any[] = []
 
   constructor(private loteriaService: LoteriaService, private router: Router,
@@ -55,9 +61,7 @@ export class BoardComponent implements OnInit {
 
   onData() {
     let socket = this.loteriaService.getSocket()
-    socket.on('card', (card) => {
-      this.currCard = card.path
-    })
+    socket.on('card', (card) => { this.currCard = card.path })
 
     /* PARA EMITIR WIN: this.loteriaService.emitWin(data)  */
     socket.on('onWin', (data) => {
@@ -70,14 +74,18 @@ export class BoardComponent implements OnInit {
           switch(data.forma){
             case 'loteria':
               this.winButtonsLoteria = false
+              this.loteriaWinner = data.username
               break
             case 'centro':
               this.winButtonsCentro = false
+              this.centroWinner = data.username
               break
             case 'full':
               this.winButtonsLoteria = false
               this.winButtonsCentro = false
               this.winButtonsFull = false
+
+              this.fullWinner = data.username
               // TODOS
               this.dialog.open(WinComponent, {
                 data:{
